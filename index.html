@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Countdown Display</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        margin: 0;
+        background: black;
+      }
+      img {
+        display: block;
+        width: 100vw;
+        height: 100vh;
+        object-fit: contain;
+      }
+    </style>
+  </head>
+  <body>
+    <img id="countdown" src="" alt="Countdown" />
+    <script>
+      const img = document.getElementById("countdown");
+
+      function refresh() {
+        const url =
+          "https://image.thum.io/get/width/1024/https://www.timeanddate.com/countdown/generic";
+        img.src = url + "?t=" + Date.now(); // Add timestamp to avoid cache
+      }
+
+      refresh();
+      setInterval(refresh, 15000); // Refresh every 15 seconds (adjust as needed)
+    </script>
+  </body>
+</html>
