@@ -5,30 +5,38 @@
     <title>Countdown Display</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
-      body {
+    body {
         margin: 0;
         background: black;
-      }
-      img {
+    }
+    img {
         display: block;
         width: 100vw;
         height: 100vh;
         object-fit: contain;
-      }
-    </style>
+        transition: opacity 0.5s ease;
+        opacity: 1;
+    }
+</style>
+
   </head>
   <body>
     <img id="countdown" src="" alt="Countdown" />
     <script>
       const img = document.getElementById("countdown");
 
-      function refresh() {
-       const url = "https://image.thum.io/get/width/1024/https://time.my-masjid.com/timingscreen/2d46401d-b12e-40bf-913e-ad167bee8e91";
-       img.src = url + "?t=" + Date.now();
-      }
+    function refresh() {
+        img.style.opacity = 0;
+        const url = "https://image.thum.io/get/width/1024/https://time.my-masjid.com/timingscreen/2d46401d-b12e-40bf-913e-ad167bee8e91";
+        img.onload = () => {
+            img.style.opacity = 1;
+        };
+        img.src = url + "?t=" + Date.now();
+    }
+
 
       refresh();
-      setInterval(refresh, 15000); // Refresh every 15 seconds (adjust as needed)
+      setInterval(refresh, 60000); // Refresh every 15 seconds (adjust as needed)
     </script>
   </body>
 </html>
