@@ -7,29 +7,37 @@
     <style>
       body {
         margin: 0;
-        background: black;
-      }
-      img {
-        display: block;
-        width: 100vw;
+        background-color: #000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         height: 100vh;
+      }
+
+      img {
+        max-width: 100vw;
+        max-height: 100vh;
         object-fit: contain;
+        background-color: #000;
       }
     </style>
   </head>
   <body>
-    <img id="countdown" src="" alt="Countdown" />
+    <img id="countdown" src="" alt="Live Countdown" />
     <script>
       const img = document.getElementById("countdown");
 
+      // Change this URL to your own countdown page
+      const countdownUrl = "https://time.my-masjid.com/timingscreen/2d46401d-b12e-40bf-913e-ad167bee8e91";
+
+      const screenshotUrl = `https://image.thum.io/get/width/1024/${encodeURIComponent(countdownUrl)}`;
+
       function refresh() {
-        const url =
-          "https://image.thum.io/get/width/1024/https://www.timeanddate.com/countdown/generic";
-        img.src = url + "?t=" + Date.now(); // Add timestamp to avoid cache
+        img.src = `${screenshotUrl}?t=${Date.now()}`;
       }
 
       refresh();
-      setInterval(refresh, 15000); // Refresh every 15 seconds (adjust as needed)
+      setInterval(refresh, 30000); // refresh every 30 seconds
     </script>
   </body>
 </html>
